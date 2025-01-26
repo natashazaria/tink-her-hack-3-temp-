@@ -1,23 +1,22 @@
-# [Project Name] 🎯
+# [STUDY EASE] 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: [Trojan]
 
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Member 1: [Natasha Zaria] - [Government Engineering College,Thrissur]
+
 
 ### Hosted Project Link
 [mention your project hosted project link here]
 
 ### Project Description
-[2-3 lines about what your project does]
+[smart study is what we aim with this platform.learn from players who have already concured the battle]
 
 ### The Problem statement
-[What ridiculous problem are you solving?]
+[]
 
 ### The Solution
 [How are you solving it? Keep it fun!]

@@ -1,0 +1,103 @@
+/* Define CSS Variables */
+:root {
+    --background-color: #F9FAFB;
+    --text-color: #e0be69;
+    --primary-color: #9f5c04;
+    --primary-hover-color: #846e59b8;
+    --secondary-color: #DBEAFE;
+    --heading-color: #796340;
+    --paragraph-color: #bea12d;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--background-color);
+    background-image: url('"C:\Users\DHRUVA\Pictures\Screenshots\Screenshot 2025-01-26 043810.png".jpg'); 
+      background-size: cover; 
+      background-position: center; 
+      background-repeat: no-repeat;
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 16px 0;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+header nav ul {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section Styles */
+section {
+    padding: 64px 0;
+    text-align: center;
+    height: 100vh;
+}
+section.bg-blue-100 {
+    background-color: var(--secondary-color);
+}
+section h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--heading-color);
+    margin-bottom: 24px;
+}
+section p {
+    font-size: 1.125rem;
+    color: var(--paragraph-color);
+    margin-bottom: 24px;
+}
+section a {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+section a:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 24px 0;
+    text-align: center;
+}
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}

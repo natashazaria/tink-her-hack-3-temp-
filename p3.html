@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --brown: #6D4C41;
+            --beige: #F5E6D3;
+            --white: #FFFFFF;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--beige);
+        }
+
+        .profile-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--brown);
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .profile-btn:hover {
+            background-color: #54372E;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+
+        .folder-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .folder {
+            background-color: var(--white);
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .folder:hover {
+            transform: translateY(-5px);
+        }
+
+        .folder-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .folder-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            color: var(--brown);
+        }
+
+        .folder-title {
+            color: var(--brown);
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .folder-content {
+            color: var(--brown);
+            padding: 10px;
+            background-color: var(--beige);
+            border-radius: 5px;
+            min-height: 150px;
+        }
+
+        .notes-folder .folder-icon {
+            color: #54372E;
+        }
+
+        .youtube-folder .folder-icon {
+            color: #e48b8b;
+        }
+    </style>
+</head>
+<body>
+    <button class="profile-btn"><i class="fas fa-user"></i> Profile</button>
+    
+    <div class="container">
+        <div class="folder-container">
+            <div class="folder notes-folder">
+                <div class="folder-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h2 class="folder-title">Notes</h2>
+                </div>
+                <div class="folder-content">
+                    <p>YOUR NOTES<br>
+                    
+                
+                </p>
+                </div>
+            </div>
+            <div class="folder youtube-folder">
+                <a href="embed.html">
+                <div class="folder-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h2 class="folder-title">YouTube Playlist</h2>
+                </div>
+                </a>
+                <div class="folder-content">
+                    <p>hocus FOCUS</p><br>
+                    
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

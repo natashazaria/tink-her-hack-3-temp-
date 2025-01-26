@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyStream - Focused Learning Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --deep-brown: #8d5928;
+            --warm-beige: #E8E0D4;
+            --pure-white: #FFFFFF;
+            --accent-gold: #C4A484;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            background: var(--warm-beige);
+            color: var(--deep-brown);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .study-header {
+            background: var(--deep-brown);
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .header-icon {
+            width: 40px;
+            height: 40px;
+            filter: invert(89%) sepia(12%) saturate(374%) hue-rotate(358deg) brightness(92%) contrast(85%);
+        }
+
+        .main-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--pure-white);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .input-section {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .video-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--warm-beige);
+            color: var(--deep-brown);
+        }
+
+        .submit-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--deep-brown);
+            color: var(--pure-white);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-gold);
+        }
+
+        .notes-section {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .notes-box {
+            width: 100%;
+            height: 200px;
+            padding: 1rem;
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            background: var(--warm-beige);
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--pure-white);
+            z-index: 1000;
+            display: none;
+        }
+
+        #video-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .lock-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--deep-brown);
+            color: var(--pure-white);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            display: none;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <div class="study-header">
+        <div class="header-content">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z'/%3E%3C/svg%3E" 
+                 class="header-icon" 
+                 alt="Education Icon">
+            <h1>StudyStream</h1>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="input-section">
+            <input type="url" 
+                   class="video-input" 
+                   placeholder="Enter YouTube study video link..."
+                   id="videoUrl">
+            <button class="submit-btn" onclick="loadVideo()">
+                <i class="fas fa-book-open"></i> Start Studying
+            </button>
+        </div>
+
+        <div class="notes-section">
+            <textarea class="notes-box" 
+                      placeholder="Jot down your study notes here..."
+                      id="studyNotes"></textarea>
+        </div>
+    </div>
+
+    <div class="fullscreen-overlay" id="videoOverlay">
+        <iframe id="video-frame" 
+                allowfullscreen 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
+        </iframe>
+    </div>
+
+    <div class="lock-message" id="lockMessage">
+        <i class="fas fa-lock"></i> Focus Mode Activated - Complete the Video to Unlock
+    </div>
+
+    <script>
+        let videoPlaying = false;
+    
+        function loadVideo() {
+            const url = document.getElementById('videoUrl').value;
+            const videoId = extractVideoId(url);
+    
+            if (!videoId) {
+                alert('Please enter a valid YouTube URL');
+                return;
+            }
+    
+            document.querySelector('.notes-section').style.display = 'block';
+            const videoOverlay = document.getElementById('videoOverlay');
+            const videoFrame = document.getElementById('video-frame');
+            
+            videoOverlay.style.display = 'block';
+            videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0&enablejsapi=1`;
+    
+            // Automatically enter fullscreen
+            if (videoOverlay.requestFullscreen) {
+                videoOverlay.requestFullscreen();
+            } else if (videoOverlay.mozRequestFullScreen) { // For Firefox
+                videoOverlay.mozRequestFullScreen();
+            } else if (videoOverlay.webkitRequestFullscreen) { // For Safari
+                videoOverlay.webkitRequestFullscreen();
+            } else if (videoOverlay.msRequestFullscreen) { // For IE/Edge
+                videoOverlay.msRequestFullscreen();
+            }
+    
+            videoPlaying = true;
+    
+            // Monitor fullscreen status
+            document.addEventListener('fullscreenchange', enforceFullscreen);
+            document.addEventListener('webkitfullscreenchange', enforceFullscreen);
+            document.addEventListener('mozfullscreenchange', enforceFullscreen);
+            document.addEventListener('msfullscreenchange', enforceFullscreen);
+        }
+    
+        function enforceFullscreen() {
+            const videoOverlay = document.getElementById('videoOverlay');
+    
+            // If fullscreen is exited while the video is still playing
+            if (!document.fullscreenElement && videoPlaying) {
+                alert('You must stay in fullscreen mode to continue the video.');
+    
+                // Attempt to re-enter fullscreen
+                if (videoOverlay.requestFullscreen) {
+                    videoOverlay.requestFullscreen();
+                } else if (videoOverlay.mozRequestFullScreen) {
+                    videoOverlay.mozRequestFullScreen();
+                } else if (videoOverlay.webkitRequestFullscreen) {
+                    videoOverlay.webkitRequestFullscreen();
+                } else if (videoOverlay.msRequestFullscreen) {
+                    videoOverlay.msRequestFullscreen();
+                }
+            }
+        }
+    
+        function extractVideoId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+    </script>    
+</body>
+</html>
