@@ -1,8 +1,8 @@
-# [STUDY EASE] 🎯
+# STUDY EASE 🎯
 
 
 ## Basic Details
-### Team Name: [Trojan]
+### Team Name: Trojan
 
 
 ### Team Members
@@ -25,7 +25,7 @@ This platform addresses these challenges by providing a structured, distraction-
 ### Technologies/Components Used
 For Software:
 - HTML,CSS
-[Tools used
+Tools used
 -VScode,Git,github
 
 
@@ -33,33 +33,12 @@ For Software:
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot 2025-01-26 103452](https://github.com/user-attachments/assets/a587d30d-7227-40f6-b03b-fd93b5e4f102)
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot 2025-01-26 103652](https://github.com/user-attachments/assets/5a91f1d8-ae77-4647-a9c9-967a3355e0bf)
 
-# Diagrams  
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+![Screenshot 2025-01-26 103931](https://github.com/user-attachments/assets/b8354726-4019-4f7a-b396-9330a0b14962)
 
-# Build Photos
-![Team](Add photo of your team here
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
+thats all
 
